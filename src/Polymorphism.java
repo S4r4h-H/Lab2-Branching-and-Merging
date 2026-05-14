@@ -1,5 +1,5 @@
 public class Polymorphism {
-    // TODO TASK 1: Fix the bugs in this code to pass PolymorphismTest.java
+    // DONE TASK 1: Fix the bugs in this code to pass PolymorphismTest.java
 
     /**
      * Returns the role.
@@ -7,13 +7,13 @@ public class Polymorphism {
      * @return the role of the person
      */
     public static String getStudentRole(Person p) {
-        // TODO: right now for student, it is not returning the role to be student.
-        return p.role;
+        // Using getter method ensures polymorphic behavior
+        return p.getRole();
     }
 }
 
 class Person {
-    public final String role = "General";
+    private final String role = "General"; //switched this from public to private
     private final String name;
 
     public Person(String name) {
@@ -23,14 +23,27 @@ class Person {
     public String getName() {
         return this.name;
     }
+
+    //also added this
+    public String getRole() {
+        return this.role;
+    }
+
 }
 
 class Student extends Person {
-    public final String role = "Student";
+    private final String role = "Student";  //changed from public to private
     private final String studentId;
 
     public Student(String name, String studentId) {
         super(name);
         this.studentId = studentId;
     }
+    //this was added too
+    @Override
+    public String getRole() {
+        return this.role;
+    }
+
+
 }
